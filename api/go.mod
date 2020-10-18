@@ -1,4 +1,4 @@
-module github.com/michelangelolopes/mali
+module github.com/michelangelolopes/mali/api
 
 go 1.15
 

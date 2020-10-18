@@ -1,4 +1,4 @@
-package main
+package helper
 
 import (
 	"context"
@@ -13,10 +13,10 @@ import (
 
 // ConnectDB : This is helper function to connect mongoDB
 // If you want to export your function. You must to start upper case function name. Otherwise you won't see your function when you import that on other class.
-func ConnectDB() *mongo.Collection {
+func ConnectDB(collectionName string) *mongo.Collection {
 
 	// Set client options
-	clientOptions := options.Client().ApplyURI("mongodb+srv://dalbonio:@V24kCFI8rPwXFbOk@clustermali.egsl8.mongodb.net/Mali_Mongo?retryWrites=true&w=majority")
+	clientOptions := options.Client().ApplyURI("mongodb+srv://dalbonio:V24kCFI8rPwXFbOk@clustermali.egsl8.mongodb.net/Mali_Mongo?retryWrites=true&w=majority")
 
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
@@ -27,7 +27,7 @@ func ConnectDB() *mongo.Collection {
 
 	fmt.Println("Connected to MongoDB!")
 
-	collection := client.Database("Mali_Mongo").Collection("mali")
+	collection := client.Database("Mali_Mongo").Collection(collectionName)
 
 	return collection
 }
